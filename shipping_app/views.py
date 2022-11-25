@@ -63,41 +63,44 @@ class ShipwayShippinMethod(ShippingMethod, APIView):
     @csrf_exempt
     @api_view(('POST',))
     def create_waybill(self):
+        print("Waybill printed")
+        return Response({"status": "Success"}, status=status.HTTP_200_OK)
+        
+        #Actual implementation will look like below code
+        # values = {
+        #     "username": SHIPWAY_USERNAME,
+        #     "password": SHIPWAY_KEY,
+        #     "carrier_id": ShipwayShippinMethod.carrier_id,
+        #     "awb": ShipwayShippinMethod.awb,
+        #     "order_id": ShipwayShippinMethod.order_id,
+        #     "first_name": ShipwayShippinMethod.first_name,
+        #     "last_name": ShipwayShippinMethod.last_name,
+        #     "email": ShipwayShippinMethod.email,
+        #     "phone": ShipwayShippinMethod.phone,
+        #     "products": ShipwayShippinMethod.products,
+        #     "company": ShipwayShippinMethod.company
+        # }
 
-        values = {
-            "username": SHIPWAY_USERNAME,
-            "password": SHIPWAY_KEY,
-            "carrier_id": ShipwayShippinMethod.carrier_id,
-            "awb": ShipwayShippinMethod.awb,
-            "order_id": ShipwayShippinMethod.order_id,
-            "first_name": ShipwayShippinMethod.first_name,
-            "last_name": ShipwayShippinMethod.last_name,
-            "email": ShipwayShippinMethod.email,
-            "phone": ShipwayShippinMethod.phone,
-            "products": ShipwayShippinMethod.products,
-            "company": ShipwayShippinMethod.company
-        }
+        # place_order_url = "https://shipway.in/api/PushOrderData"
+        # push_order_api = requests.post(place_order_url, headers=getHeaders(), data=json.dumps(values))
+        # final_data = push_order_api.json()
 
-        place_order_url = "https://shipway.in/api/PushOrderData"
-        push_order_api = requests.post(place_order_url, headers=getHeaders(), data=json.dumps(values))
-        final_data = push_order_api.json()
+        # if final_data['status'] == 'Success':
+        #     Orders.objects.create(
+        #         carrier_id = ShipwayShippinMethod.carrier_id,
+        #         awb = ShipwayShippinMethod.awb,
+        #         order_id = ShipwayShippinMethod.order_id,
+        #         first_name = ShipwayShippinMethod.first_name,
+        #         last_name = ShipwayShippinMethod.last_name,
+        #         email = ShipwayShippinMethod.email,
+        #         phone = ShipwayShippinMethod.phone,
+        #         product_desc = ShipwayShippinMethod.products,
+        #         company = ShipwayShippinMethod.company
+        #     )
+        #     return Response({"status": 'success', 'message': 'Order has been created successfully'}, status=status.HTTP_200_OK) 
 
-        if final_data['status'] == 'Success':
-            Orders.objects.create(
-                carrier_id = ShipwayShippinMethod.carrier_id,
-                awb = ShipwayShippinMethod.awb,
-                order_id = ShipwayShippinMethod.order_id,
-                first_name = ShipwayShippinMethod.first_name,
-                last_name = ShipwayShippinMethod.last_name,
-                email = ShipwayShippinMethod.email,
-                phone = ShipwayShippinMethod.phone,
-                product_desc = ShipwayShippinMethod.products,
-                company = ShipwayShippinMethod.company
-            )
-            return Response({"status": 'success', 'message': 'Order has been created successfully'}, status=status.HTTP_200_OK) 
-
-        if final_data['status'] == "Failed":
-            return Response({"status": final_data['status'], 'message': final_data['message']}, status=status.HTTP_200_OK)
+        # if final_data['status'] == "Failed":
+        #     return Response({"status": final_data['status'], 'message': final_data['message']}, status=status.HTTP_200_OK)
     
     @csrf_exempt
     @api_view(('POST',))
