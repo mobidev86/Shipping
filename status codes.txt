@@ -1,0 +1,29 @@
+1	DEL - 	Delivered
+2	INT -	In Transit
+3	UND -	Undelivered
+4	RTO -	RTO
+5	RTD -	RTO Delivered
+6	CAN -	Cancelled
+7	SCH -	Shipment Booked
+8	PKP -	Picked Up
+9	ONH -	On Hold
+10	OOD -	Out for Delivery
+11	NWI -	Network Issue
+12	DNB -	Delivery Next Day
+13	NFI -	Not Found/Incorrect
+14	ODA -	Out of Delivery Area
+15	OTH -	Others
+16	SMD -	Delivery Delayed
+17	CRTA -	Customer Refused
+18	CNA -	Consignee Unavailable
+19	DEX -	Delivery Exception
+20	DRE -	Delivery Rescheduled
+21	PNR -	COD Payment Not Ready
+22	LOST -	Shipment Lost
+23	PKF -	Pick up Failed
+24	PCAN -	Pick up Cancelled
+25	FDR -	Future Delivery Requested
+26	22 -	Address Incorrect
+27	23 -	Delivery Attempted
+28	24 -	Pending - Undelivered
+29	25 -	Delivery Attempted-Premises Closed
